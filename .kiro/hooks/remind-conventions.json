@@ -1,0 +1,14 @@
+﻿{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "remind-conventions",
+      "trigger": "PreToolUse",
+      "matcher": "fs_write|str_replace|fs_append",
+      "action": {
+        "type": "agent",
+        "prompt": "Si la ruta destino del archivo que vas a escribir está bajo 'src/screens/' o 'src/components/', aplica estas convenciones del proyecto antes de generar código: (1) Todas las animaciones de UI se implementan con Framer Motion (motion.*, AnimatePresence); no uses animaciones CSS personalizadas ni @keyframes para el volteo de cartas, transiciones de menú o feedback de turno. (2) El estado global de partida vive únicamente en 'src/App.jsx' y se pasa a los hijos por props; no introduzcas Context API, Redux, Zustand ni stores externos. (3) Los estilos se expresan exclusivamente con clases de Tailwind CSS en 'className'; no crees archivos '.module.css' ni uses CSS-in-JS. (4) Los componentes y pantallas usan PascalCase y extensión '.jsx', un componente por archivo. (5) Las llamadas a fetch, setInterval, sessionStorage y canvas-confetti deben ir dentro de useEffect o de módulos en 'src/lib/'; nunca en el cuerpo del render. (6) No amplíes el alcance del producto: consulta '.kiro/steering/product.md' para la lista de límites. Si la ruta destino no está bajo 'src/screens/' o 'src/components/', ignora este recordatorio y continúa con normalidad."
+      }
+    }
+  ]
+}
